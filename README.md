@@ -1,6 +1,6 @@
 Филиалы, остатки в филиалах, региональность, геолокация
 
-## Основные возможности компонент
+## Основные возможности компонент plAffiliates
 
 * Создание филиалов с нужными полями
 * Управление порядков вывода как филиалов так и их полей
@@ -53,7 +53,7 @@
 [dadata.ru](https://dadata.ru/api/)
 
 * API конфиг сервиса DaData.ru
-* lAffiliateDaDataGeoLocation
+* PlAffiliateDaDataGeoLocation
 
 [ipinfo.io](https://ipinfo.io/developers)
 
