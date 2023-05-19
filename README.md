@@ -28,10 +28,12 @@
 ## Создание полей для филиалов
 
 На странице "Пакеты" -> Филиалы" во вкладке "Менеджер полей филиалов" вы можете создать необходимые вам для филиалов поля задав для каждого из них ряд параметров отвечающих как за тип ввода, так и за оформление.
+ 
+**Примечание**. Параметр "Мультиязычное" позволяет создать поле которое будет иметь возможность ввода значения на разных языках при условии, что установлен пакет [Polylang](https://modstore.pro/packages/other/polylang).
 
 Из "коробки" будет доступен список основных полей. При необходимости вы можете не нужные поля удалить либо отключить.
 
-Через перетаскивание поля в списке полей вы можете менять порядок его вывода в сниппетах.
+Через перетаскивание поля в списке полей вы можете менять порядок его вывода.
 
 ![](https://file.modx.pro/files/3/3/e/33ecfb141bb4bd213c63cc3455437e87.png)
 
@@ -54,7 +56,7 @@
 [[~ID-страницы]]
 ```
 
-Через перетаскивание филиала в списке филиалов вы можете менять порядок его вывода в сниппетах.
+Через перетаскивание филиала в списке филиалов вы можете менять порядок его вывода.
 
 ![](https://file.modx.pro/files/c/8/2/c82d5273aef69990e956649a8f4e9cda.png)
 
@@ -441,7 +443,7 @@ Fenom синтекс
 | controller | Экземпляр класса контроллера                                         |
 | page       | Идентификатор страницы. Доступные значения: affiliates; remains; seo |
 
-### OnPrepareMapMarkerPlAffiliate - Подготовка данных для создания маркера филиала на карте.
+### plaffiliateOnPrepareMapMarker - Подготовка данных для создания маркера филиала на карте.
 
 **Параметры**
 
@@ -463,16 +465,16 @@ Fenom синтекс
  */
 
 switch ($modx->event->name) {
-    case 'OnPrepareMapMarkerPlAffiliate':
+    case 'plaffiliateOnPrepareMapMarker':
         if ($affiliate['id'] == 5) {
-            $place['hint'] = 'New hint text';
-            $place['info'] = $tools->getPdoTools()->getChunk('@INLINE ({$id}) - {$fields.name.value}', $affiliate);
-            $place['marker'] = array(
+            $params = & $modx->event->params;
+            $params['place']['hint'] = 'New hint text';
+            $params['place']['info'] = $tools->getPdoTools()->getChunk('@INLINE ({$id}) - {$fields.name.value}', $affiliate);
+            $params['place']['marker'] = array(
               'icon' => '/assets/components/plaffiliates/images/map/marker_green.svg',
               //'size' => '67,81',
               //'anchor' => '30,81',
             );
-            $modx->event->returnedValues['place'] = $place;
         }
         break;
 }
