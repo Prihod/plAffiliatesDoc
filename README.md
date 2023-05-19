@@ -238,8 +238,6 @@ IP нужного города можно получить например на
 
 **Примечание.** Перенаправление будет происходить через 302-редирект только один раз на [сессию сайта.](https://vc.ru/u/740266-mks-media/301859-vse-chto-nuzhno-znat-o-sessii-na-sayte)
 
-![](https://file.modx.pro/files/4/0/1/401e86729e95e8018100a4f7ebba3573.png)
-
 ### Добавление информации о текущем выбранном филиале в плейсхолдеры Modx
 
 Для того что вы информация о текущем выбранном филиале была доступна через плейсхолдеры Modx необходимо:
@@ -467,7 +465,7 @@ Fenom синтекс
 switch ($modx->event->name) {
     case 'OnPrepareMapMarkerPlAffiliate':
         if ($affiliate['id'] == 5) {
-            $place['hint'] = 'New title text';
+            $place['hint'] = 'New hint text';
             $place['info'] = $tools->getPdoTools()->getChunk('@INLINE ({$id}) - {$fields.name.value}', $affiliate);
             $place['marker'] = array(
               'icon' => '/assets/components/plaffiliates/images/map/marker_green.svg',
